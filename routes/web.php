@@ -19,6 +19,8 @@ use App\Models\PtkActivityModel;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\ElectedStudentController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,11 +33,7 @@ use App\Http\Controllers\ElectedStudentController;
 */
 
 
-Route::get('/', function () {
-    //return view('welcome');
-    //return view('auth.registration');
-    return view('Auth.login');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 
@@ -72,10 +70,6 @@ Route::post('forgot-password', [AuthController::class, 'resetPassword'])->middle
 Route::get('indexResetPassword/{token}', [AuthController::class, 'indexResetPassword'])->middleware('guest')->name('indexResetPassword');
 
 Route::post('reset-password', [AuthController::class,'passwordUpdate'])->middleware('guest')->name('user.passwordUpdate');
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
 Route::group(['prefix' => 'manage-user', 'as' => 'manage-user.'], function () {
 
@@ -179,7 +173,4 @@ Route::group(['prefix' => 'manage-election', 'as' => 'manage-election.'], functi
 //Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
 Route::resource("/PtkActivity", PtkActivityController::class);
 Route::resource("/ActivityApproval", ActivityApprovalController::class);
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
