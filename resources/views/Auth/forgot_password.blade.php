@@ -1,66 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PMS System | Forgot Password</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{ asset('/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
+    <title>Forgot Password</title>
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    @if(session()->has('status'))
-        <div class="alert alert-success">
-            {{ session()->get('status') }}
-        </div>
-    @endif
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <a href="#l" class="h1">PMS System</a>
-        </div>
-        <div class="card-body">
-            <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-            <form action="{{ route('user.resetPassword') }}" method="POST">
-                @csrf
-                <div class="input-group mb-3">
-                    <input type="text" name="email" class="form-control" placeholder="Email Address" />
-                    @if($errors->has('email'))
-                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                    @endif
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+
+<body>
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <a href="{{ route('home') }}"
+                class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                <img class="w-12 h-12 mr-2" src="{{ asset('images/public/logo.png') }}" alt="logo">
+                PETAKOM
+            </a>
+            <div
+                class="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+                <h1
+                    class="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Forgot your password?
+                </h1>
+                <p class="font-light text-gray-500 dark:text-gray-400">Don't fret! Just type in your email and we will
+                    send you a code to reset your password!</p>
+                <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="{{ route('forgot-password') }}" method="POST">
+
+                    @csrf
+
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                            email</label>
+                        <input type="email" name="email" id="email"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="yourname@company.com" required="">
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input id="terms" aria-describedby="terms" type="checkbox"
+                                class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                                required="">
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the <a
+                                    class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                    href="#">Terms and Conditions</a></label>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">Request new password</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-            <p class="mt-3 mb-1">
-                <a href="{{ route('login') }}">Login</a>
-            </p>
+                    <button type="submit"
+                        class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">Reset
+                        password</button>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                </form>
+            </div>
         </div>
-        <!-- /.login-card-body -->
-    </div>
-</div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
+    </section>
 </body>
+
 </html>

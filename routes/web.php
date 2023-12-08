@@ -14,12 +14,16 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\PtkActivityController;
 use App\Http\Controllers\ActivityApprovalController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\RegistrationController;
 use App\Models\PtkActivityModel;
 
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\ElectedStudentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,20 +36,30 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
+// Main Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('registration', [AuthController::class, 'registration'])->name('register');
+// Login Route
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
-Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
+// Logout Route
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('login', [AuthController::class, 'index'])->name('login');
+// Register Route
+Route::get('/register', [RegistrationController::class, 'index'])->name('register');
+Route::post('/register', [RegistrationController::class, 'register']);
 
-Route::post('user-login', [AuthController::class, 'user_login'])->name('user.login');
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot']);
 
-Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+//Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
+
+//Route::post('user-login', [AuthController::class, 'user_login'])->name('user.login');
+
+//Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
 Route::get('edit', [ProfileController::class, 'edit'])->name('edit');
 
@@ -63,9 +77,9 @@ Route::get('register_member', [ProfileController::class, 'register_member'])->na
 
 Route::post('register', [ProfileController::class, 'member_register'])->name('user.member_register');
 
-Route::get('forgot-password', [AuthController::class, 'indexForgotPassword'])->middleware('guest')->name('indexForgotPassword');
+//Route::get('forgot-password', [AuthController::class, 'indexForgotPassword'])->middleware('guest')->name('indexForgotPassword');
 
-Route::post('forgot-password', [AuthController::class, 'resetPassword'])->middleware('guest')->name('user.resetPassword');
+//Route::post('forgot-password', [AuthController::class, 'resetPassword'])->middleware('guest')->name('user.resetPassword');
 
 Route::get('indexResetPassword/{token}', [AuthController::class, 'indexResetPassword'])->middleware('guest')->name('indexResetPassword');
 
