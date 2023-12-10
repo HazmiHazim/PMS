@@ -41,17 +41,17 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Login Route
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/authenticate', [LoginController::class, 'login'])->name('authenticate');
 
 // Logout Route
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Register Route
 Route::get('/register', [RegistrationController::class, 'index'])->name('register');
-Route::post('/register', [RegistrationController::class, 'register']);
+Route::post('/register-user', [RegistrationController::class, 'register'])->name('register-user');
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
-Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot']);
+Route::post('/forgot-password-user', [ForgotPasswordController::class, 'forgot'])->name('forgot-user');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
