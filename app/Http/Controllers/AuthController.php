@@ -12,9 +12,6 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
-    public function index() {
-        return view('Auth.login');
-    }
 
     public function user_login(Request $request){
         $request->validate([
@@ -32,10 +29,6 @@ class AuthController extends Controller
         }
 
         return redirect('login')->with('message', 'Login failed');
-    }
-
-    public function registration() {
-        return view('Auth.registration');
     }
 
     public function staff_registration(Request $request) {
