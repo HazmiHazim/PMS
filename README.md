@@ -3,11 +3,11 @@
 
 - Clone the repo
    ```
-   git clone https://github.com/haziq-danial/petakom-management-system.git
+   git clone https://github.com/HazmiHazim/PMS.git
    ```
 - Change directory
     ```
-    cd petakom-management-system
+    cd PMS
     ```
 - Copy sample `env` file and change configuration according to your need in ".env" file and create Database
     ```
@@ -16,6 +16,8 @@
 - Install php & javascript libraries
     ```
     composer install
+    ```
+    ```
     npm install
     ```
 - Setup application
@@ -28,7 +30,14 @@
        ```
        php artisan migrate
        ```    
-    - Run seeder
+    - Run seeder (Optional)
         ```
         php artisan db:seed
+        ```
+    - Run the System
+        ```
+        npm run dev
+        ```
+        ```
+        php artisan serve
         ```
