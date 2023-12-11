@@ -10,11 +10,13 @@
 </head>
 
 <body>
-    @error('error-message')
-        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-            <span class="font-medium">Error!</span> {{ $message }}
+    @if (session('success-message'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            role="alert">
+            <span class="font-medium">{{ session('success-message') }}</span>
         </div>
-    @enderror
+    @endif
+
     <section class="bg-gray-50 dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="{{ route('home') }}"
