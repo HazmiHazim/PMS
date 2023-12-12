@@ -7,13 +7,13 @@ use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\ReportController;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ManageBulletinController;
 
 use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\PtkActivityController;
 use App\Http\Controllers\ActivityApprovalController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ManageBulletinController;
 use App\Http\Controllers\Admin\ManageMemberController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -67,6 +67,10 @@ Route::get('/admin/my-profile', [ProfileController::class, 'index'])->name('view
 Route::put('/admin/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
 Route::put('admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
 
+// Manage Bulletin Module
+Route::get('/admin/bulletin', [ManageBulletinController::class, 'index'])->name('view-bulletin');
+Route::get('/admin/index-create-bulletin', [ManageBulletinController::class, 'viewCreateBulletin'])->name('view-create-bulletin');
+
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
 //Route::post('user-login', [AuthController::class, 'user_login'])->name('user.login');
@@ -101,7 +105,7 @@ Route::group(['prefix' => 'manage-user', 'as' => 'manage-user.'], function () {
 
 });
 
-
+/*
 Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
     // Index page complete
     Route::get('/index', [ManageBulletinController::class, 'viewBulletinList'])
@@ -143,6 +147,7 @@ Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
     Route::post('/update/{bulletin_id}', [ManageBulletinController::class, 'updateBulletin'])
         ->name('update');
 });
+*/
 
 Route::group(['prefix' => 'manage-report', 'as' => 'manage-report.'], function (){
     Route::get('/', [ReportController::class, 'index'])->name('index');
