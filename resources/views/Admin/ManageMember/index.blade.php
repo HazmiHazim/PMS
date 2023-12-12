@@ -12,14 +12,15 @@
             </div>
         @endif
 
-        <div class="flex justify-end">
+        <div class="flex justify-between mb-5">
+            <h1 class="text-2xl font-bold text-gray-700 px-6 md:px-0">List of Member</h1>
             <a href="{{ route('view-create-member') }}"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 Member</a>
         </div>
 
         <div class="flex-col mb-5">
-            
+
             <label for="hosd" class="ml-5 font-bold text-2xl">Head of Student Development</label>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -48,13 +49,13 @@
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $hosd->name }}</th>
-                                    <td class="px-6 py-4">{{ $hosd->umpid }}</td>
-                                    <td class="px-6 py-4">{{ $hosd->email }}</td>
-                                    <td class="px-6 py-4">{{ $hosd->role }}</td>
-                                    <td class="px-6 py-4">
-                                <a href="{{ route('view-edit-member', $hosd->id) }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
+                                <td class="px-6 py-4">{{ $hosd->umpid }}</td>
+                                <td class="px-6 py-4">{{ $hosd->email }}</td>
+                                <td class="px-6 py-4">{{ $hosd->role }}</td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('view-edit-member', $hosd->id) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -98,7 +99,7 @@
         </div>
 
         <div class="flex-col mb-5">
-            
+
             <label for="hosd" class="ml-5 font-bold text-2xl">Dean</label>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -127,13 +128,13 @@
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $dean->name }}</th>
-                                    <td class="px-6 py-4">{{ $dean->umpid }}</td>
-                                    <td class="px-6 py-4">{{ $dean->email }}</td>
-                                    <td class="px-6 py-4">{{ $dean->role }}</td>
-                                    <td class="px-6 py-4">
-                                <a href="{{ route('view-edit-member', $dean->id) }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
+                                <td class="px-6 py-4">{{ $dean->umpid }}</td>
+                                <td class="px-6 py-4">{{ $dean->email }}</td>
+                                <td class="px-6 py-4">{{ $dean->role }}</td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('view-edit-member', $dean->id) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -177,7 +178,7 @@
         </div>
 
         <div class="flex-col mb-5">
-            
+
             <label for="hosd" class="ml-5 font-bold text-2xl">PETAKOM Committee</label>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -206,13 +207,13 @@
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $ptkm->name }}</th>
-                                    <td class="px-6 py-4">{{ $ptkm->umpid }}</td>
-                                    <td class="px-6 py-4">{{ $ptkm->email }}</td>
-                                    <td class="px-6 py-4">{{ $ptkm->role }}</td>
-                                    <td class="px-6 py-4">
-                                <a href="{{ route('view-edit-member', $ptkm->id) }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
+                                <td class="px-6 py-4">{{ $ptkm->umpid }}</td>
+                                <td class="px-6 py-4">{{ $ptkm->email }}</td>
+                                <td class="px-6 py-4">{{ $ptkm->role }}</td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('view-edit-member', $ptkm->id) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -256,7 +257,7 @@
         </div>
 
         <div class="flex-col mb-5">
-            
+
             <label for="Lecturer" class="ml-5 font-bold text-2xl">Lecturer</label>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -285,13 +286,13 @@
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $lecturer->name }}</th>
-                                    <td class="px-6 py-4">{{ $lecturer->umpid }}</td>
-                                    <td class="px-6 py-4">{{ $lecturer->email }}</td>
-                                    <td class="px-6 py-4">{{ $lecturer->role }}</td>
-                                    <td class="px-6 py-4">
-                                <a href="{{ route('view-edit-member', $lecturer->id) }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
+                                <td class="px-6 py-4">{{ $lecturer->umpid }}</td>
+                                <td class="px-6 py-4">{{ $lecturer->email }}</td>
+                                <td class="px-6 py-4">{{ $lecturer->role }}</td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('view-edit-member', $lecturer->id) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -335,7 +336,7 @@
         </div>
 
         <div class="flex-col mb-5">
-            
+
             <label for="Student" class="ml-5 font-bold text-2xl">Student</label>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -364,13 +365,13 @@
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $student->name }}</th>
-                                    <td class="px-6 py-4">{{ $student->umpid }}</td>
-                                    <td class="px-6 py-4">{{ $student->email }}</td>
-                                    <td class="px-6 py-4">{{ $student->role }}</td>
-                                    <td class="px-6 py-4">
-                                <a href="{{ route('view-edit-member', $student->id) }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
+                                <td class="px-6 py-4">{{ $student->umpid }}</td>
+                                <td class="px-6 py-4">{{ $student->email }}</td>
+                                <td class="px-6 py-4">{{ $student->role }}</td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('view-edit-member', $student->id) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
