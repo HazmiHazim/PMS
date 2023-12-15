@@ -69,7 +69,10 @@ Route::put('admin/update-password', [ProfileController::class, 'updatePassword']
 
 // Manage Bulletin Module
 Route::get('/admin/bulletin', [ManageBulletinController::class, 'index'])->name('view-bulletin');
+Route::get('/admin/official-bulletin', [ManageBulletinController::class, 'viewOfficialBulletin'])->name('official-bulletin');
+Route::get('/admin/unofficial-bulletin', [ManageBulletinController::class, 'viewUnofficialBulletin'])->name('unofficial-bulletin');
 Route::get('/admin/index-create-bulletin', [ManageBulletinController::class, 'viewCreateBulletin'])->name('view-create-bulletin');
+Route::post('/admin/create-bulletin', [ManageBulletinController::class, 'createBulletin'])->name('create-bulletin');
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 

@@ -3,15 +3,35 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bulletin;
+use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
+
+use function Ramsey\Uuid\v1;
 
 class ManageBulletinController extends Controller
 {
     // View Bulletin
     public function index() : View
     {
-        return view('Admin.ManageBulletin.index');
+        $bulletin = Bulletin::all();
+        return view('Admin.ManageBulletin.index', compact('bulletin'));
+    }
+
+    public function viewOfficialBulletin() : View
+    {
+        $bulletin = Bulletin::where('category', 'official')->get();
+        return view('Admin.ManageBulletin.official', compact('bulletin'));
+    }
+
+    public function viewUnofficialBulletin() : View
+    {
+        $bulletin = Bulletin::where('category', 'unofficial')->get();
+        return view('Admin.ManageBulletin.unofficial', compact('bulletin'));
     }
 
 
@@ -21,6 +41,34 @@ class ManageBulletinController extends Controller
     public function viewCreateBulletin() : View
     {
         return view('Admin.ManageBulletin.create');
+    }
+
+    public function createBulletin(Request $request) : RedirectResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'category' => 'required|in:official,unofficial',
+            'title' => 'required|max:255',
+            'message' => 'required|max:9999999',
+            'url_reference' => 'required',
+            'duration' => 'required|numeric|integer',
+            'expired' => 'required|date|after:today',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $bulletin = Bulletin::create([
+            'posted_by' => Auth::user()->umpid,
+            'category' => $request->category,
+            'title' => $request->title,
+            'message' => $request->message,
+            'url_reference' => $request->url_reference,
+            'duration' => $request->duration,
+            'expired_at' => Carbon::createFromFormat('d/m/Y', $request->expired),
+        ]);
+
+        return back()->with('success-message', 'New announcement has been created.');
     }
 
     /*
