@@ -44,7 +44,17 @@
                                             <tr class="border-b dark:border-neutral-500">
                                                 <td class="whitespace-nowrap px-6 py-4 font-medium">
                                                     {{ date('j M', strtotime($news->created_at)) }}</td>
-                                                <td class="whitespace-nowrap px-6 py-4">{{ $news->title }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4">
+                                                    <a class="text-decoration-line: underline text-blue-500"
+                                                        href="{{ route('show-announcement', $news->bulletin_id) }}"
+                                                        target="_blank">{{ $news->title }}</a>
+                                                </td>
+                                                @if (in_array(Auth()->user()->role, ['coordinator', 'dean', 'hosd', 'ptkm_committee', 'lecturer']))
+                                                    <td class="whitespace-nowrap px-6 py-4">
+                                                        <a href="{{ route('view-edit-bulletin', $news->bulletin_id) }}"
+                                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                                    </td>
+                                                @endif
                                             </tr>
                                         @endif
                                     @endforeach

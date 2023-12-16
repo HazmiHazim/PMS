@@ -34,6 +34,12 @@ class ManageBulletinController extends Controller
         return view('Admin.ManageBulletin.unofficial', compact('bulletin'));
     }
 
+    public function showAnnouncement($id) : View
+    {
+        $announcement = Bulletin::findOrFail($id);
+        return view('Admin.ManageBulletin.show', compact('announcement'));
+    }
+
 
     /**
      * Create New Bulletin
@@ -69,6 +75,58 @@ class ManageBulletinController extends Controller
         ]);
 
         return back()->with('success-message', 'New announcement has been created.');
+    }
+
+    /**
+     * Edit Bulletin
+     */
+    public function editBulletin($id): View
+    {
+        $bulletin = Bulletin::findOrFail($id);
+        return view('Admin.ManageBulletin.edit', compact('bulletin'));
+    }
+
+    public function updateBulletin(Request $request, $id) : RedirectResponse
+    {
+        $bulletin = Bulletin::findOrFail($id);
+
+        if ($request->anyFilled(['category', 'title', 'message', 'url_reference', 'duration', 'expired'])) {
+
+            $updateData = [];
+
+            if ($request->filled('category')) {
+                $updateData['category'] = $request->input('category');
+            }
+
+            if ($request->filled('title')) {
+                $updateData['title'] = $request->input('title');
+            }
+
+            if ($request->filled('message')) {
+                $updateData['message'] = $request->input('message');
+            }
+
+            if ($request->filled('url_reference')) {
+                $updateData['url_reference'] = $request->input('url_reference');
+            }
+
+            if ($request->filled('duration')) {
+                $updateData['duration'] = $request->input('duration');
+            }
+
+            if ($request->filled('expired')) {
+                $updateData['expired'] = $request->input('expired');
+            }
+
+            $updated = $bulletin->update($updateData);
+
+            return back()->with('success-message', 'Bulletin update successful.');
+        }
+        else {
+            return back()->withErrors([
+                'error-message' => 'Please insert data to update announcement.'
+            ]);
+        }
     }
 
     /*

@@ -72,7 +72,10 @@ Route::get('/admin/bulletin', [ManageBulletinController::class, 'index'])->name(
 Route::get('/admin/official-bulletin', [ManageBulletinController::class, 'viewOfficialBulletin'])->name('official-bulletin');
 Route::get('/admin/unofficial-bulletin', [ManageBulletinController::class, 'viewUnofficialBulletin'])->name('unofficial-bulletin');
 Route::get('/admin/index-create-bulletin', [ManageBulletinController::class, 'viewCreateBulletin'])->name('view-create-bulletin');
+Route::get('/admin/show-announcement/{id}', [ManageBulletinController::class, 'showAnnouncement'])->name('show-announcement');
+Route::get('/admin/index-edit-bulletin/{id}', [ManageBulletinController::class, 'editBulletin'])->name('view-edit-bulletin');
 Route::post('/admin/create-bulletin', [ManageBulletinController::class, 'createBulletin'])->name('create-bulletin');
+Route::put('/admin/update-bulletin/{id}', [ManageBulletinController::class, 'updateBulletin'])->name('update-bulletin');
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
