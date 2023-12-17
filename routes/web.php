@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManageBulletinController;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\PtkActivityController;
 use App\Http\Controllers\ActivityApprovalController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ManageMemberController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegistrationController;
-use App\Models\PtkActivityModel;
 
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ElectionController;
@@ -53,7 +53,19 @@ Route::post('/register-user', [RegistrationController::class, 'register'])->name
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
 Route::post('/forgot-password-user', [ForgotPasswordController::class, 'forgot'])->name('forgot-user');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Manage User Module
+Route::get('/admin/member-index', [ManageMemberController::class, 'index'])->name('view-member-index');
+Route::get('/admin/index-create-member', [ManageMemberController::class, 'viewCreateMember'])->name('view-create-member');
+Route::get('/admin/index-edit-member/{id}', [ManageMemberController::class, 'viewEditMember'])->name('view-edit-member');
+Route::post('/admin/create-member', [ManageMemberController::class, 'createMember'])->name('create-member');
+Route::delete('/admin/delete-member/{id}', [ManageMemberController::class, 'deleteMember'])->name('delete-member');
+
+// Manage User Profile
+Route::get('/admin/my-profile', [ProfileController::class, 'index'])->name('view-my-profile');
+Route::put('/admin/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
+Route::put('admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
@@ -61,21 +73,21 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 //Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
-Route::get('edit', [ProfileController::class, 'edit'])->name('edit');
+//Route::get('edit', [ProfileController::class, 'edit'])->name('edit');
 
-Route::post('user-edit', [ProfileController::class, 'edit_validation'])->name('user.edit_validation');
+//Route::post('user-edit', [ProfileController::class, 'edit_validation'])->name('user.edit_validation');
 
-Route::get('view', [ProfileController::class, 'view'])->name('view');
+//Route::get('view', [ProfileController::class, 'view'])->name('view');
 
-Route::get('password', [ProfileController::class, 'password'])->name('password');
+//Route::get('password', [ProfileController::class, 'password'])->name('password');
 
-Route::post('change-password', [ProfileController::class, 'changePassword'])->name('user.changePassword');
+//Route::post('change-password', [ProfileController::class, 'changePassword'])->name('user.changePassword');
 
-Route::post('user-view', [ProfileController::class, 'view_profile'])->name('user.view_profile');
+//Route::post('user-view', [ProfileController::class, 'view_profile'])->name('user.view_profile');
 
-Route::get('register_member', [ProfileController::class, 'register_member'])->name('register_member');
+//Route::get('register_member', [ProfileController::class, 'register_member'])->name('register_member');
 
-Route::post('register', [ProfileController::class, 'member_register'])->name('user.member_register');
+//Route::post('register', [ProfileController::class, 'member_register'])->name('user.member_register');
 
 //Route::get('forgot-password', [AuthController::class, 'indexForgotPassword'])->middleware('guest')->name('indexForgotPassword');
 

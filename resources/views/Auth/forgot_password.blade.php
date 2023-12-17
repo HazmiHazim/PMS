@@ -25,7 +25,7 @@
                 </h1>
                 <p class="font-light text-gray-500 dark:text-gray-400">Don't fret! Just type in your email and we will
                     send you a code to reset your password!</p>
-                <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="{{ route('forgot-password-user') }}" method="POST">
+                <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="{{ route('forgot-password') }}" method="POST">
 
                     @csrf
 
