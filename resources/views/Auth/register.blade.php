@@ -10,12 +10,13 @@
 </head>
 
 <body>
-    @error('error-message')
-        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-            <span class="font-medium">Error!</span> {{ $message }}
-        </div>
-    @enderror
     <section class="bg-gray-50 dark:bg-gray-900">
+        @if (session('success-message'))
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                role="alert">
+                <span class="font-medium">{{ session('success-message') }}</span>
+            </div>
+        @endif
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="{{ route('home') }}"
                 class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -29,7 +30,7 @@
                         class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Create and account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="{{ route('register') }}" method="POST">
+                    <form class="space-y-4 md:space-y-6" action="{{ route('register-user') }}" method="POST">
 
                         @csrf
 
