@@ -25,6 +25,8 @@ use App\Http\Controllers\ElectedStudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 
+use App\Http\Controllers\CalendarController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,6 +90,10 @@ Route::post('reset-password', [AuthController::class,'passwordUpdate'])->middlew
 Route::group(['prefix' => 'manage-user', 'as' => 'manage-user.'], function () {
 
 });
+
+//Manage Calendar
+Route::get('calendar-event', [CalendarController::class, 'index']);
+Route::post('calendar-crud-ajax', [CalendarController::class, 'calendarEvents']);
 
 
 Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
