@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('admin.main')
 
-@section('title', 'Create Report')
+@section('title', 'Edit Report')
 
 @section('stylesheet')
     <!-- Google Font: Source Sans Pro -->
@@ -15,7 +15,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Report</h1>
+                    <h1>Edit Report</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -24,24 +24,25 @@
     <section class="content">
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h3 class="card-title">Create Report</h3>
+                <h3 class="card-title">Edit Report</h3>
             </div>
             <!-- /.card-header -->
-            <form action="{{ route('manage-report.store') }}" method="post">
+            <form action="{{ route('manage-report.update', $report->ReportID) }}" method="post">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <input class="form-control" name="title" placeholder="Report Title">
+                        <input class="form-control" name="title" value="{{ $report->title }}" placeholder="Report Title">
                     </div>
                     <div class="form-group">
                     <textarea id="compose-textarea" name="report_content" class="form-control" style="height: 300px">
+                        {!! $report->report_content !!}
                     </textarea>
                     </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <div class="float-right">
-                        <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>
+                        <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Update</button>
                     </div>
                     <a href="{{ route('manage-report.index') }}" class="btn btn-default"><i class="fas fa-times"></i> Cancel</a>
                 </div>
