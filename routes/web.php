@@ -69,8 +69,8 @@ Route::put('/admin/update-profile', [ProfileController::class, 'updateProfile'])
 Route::put('admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
 
 //Manage Calendar
-Route::get('/admin/calendar-event', [CalendarController::class, 'index'])->name('view-calendar');
-Route::post('/admin/calendar-crud-ajax', [CalendarController::class, 'calendarEvents'])->name('create-calendar');
+Route::get('/admin/fullcalender', [CalendarController::class, 'index']);
+Route::post('/admin/fullcalenderAjax', [CalendarController::class, 'ajax']);
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 

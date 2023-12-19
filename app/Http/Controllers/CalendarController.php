@@ -10,35 +10,36 @@ class CalendarController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Calendar::whereDate('startDate', '>=', $request->start)
-                ->whereDate('endDate',   '<=', $request->end)
-                ->get(['id', 'event_name', 'event_detail', 'startDate', 'endDate']);
+
+            $data = Calendar::whereDate('start', '>=', $request->start)
+                ->whereDate('end',   '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
+
             return response()->json($data);
         }
-        return view('Admin.ManageCalendar.calendar');
+
+        return view('Admin.ManageCalendar.fullcalender');
     }
 
-    public function calendarEvents(Request $request)
+    public function ajax(Request $request)
     {
 
         switch ($request->type) {
-            case 'create':
+            case 'add':
                 $event = Calendar::create([
-                    'event_name' => $request->event_name,
-                    'event_detail' => $request->event_detail,
-                    'startDate' => $request->startDate,
-                    'endDate' => $request->endDate,
+                    'title' => $request->title,
+                    'start' => $request->start,
+                    'end' => $request->end,
                 ]);
 
                 return response()->json($event);
                 break;
 
-            case 'edit':
+            case 'update':
                 $event = Calendar::find($request->id)->update([
-                    'event_name' => $request->event_name,
-                    'event_detail' => $request->event_detail,
-                    'startDate' => $request->startDate,
-                    'endDate' => $request->endDate,
+                    'title' => $request->title,
+                    'start' => $request->start,
+                    'end' => $request->end,
                 ]);
 
                 return response()->json($event);
@@ -51,7 +52,7 @@ class CalendarController extends Controller
                 break;
 
             default:
-                # ...
+
                 break;
         }
     }

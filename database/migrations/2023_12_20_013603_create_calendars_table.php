@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-            $table->string('event_name');
-            $table->string('event_detail');
-            $table->date('startDate');
-            $table->date('endDate'); 
+            $table->string('title');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
         });
     }
