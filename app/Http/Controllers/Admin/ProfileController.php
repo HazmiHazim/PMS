@@ -1,14 +1,83 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    /**
+     * View My Profile
+     */
+    public function index(): View
+    {
+        $user = Auth::user();
+        return view('Admin.UserProfile.index', compact('user'));
+    }
+
+    public function updateProfile(Request $request) : RedirectResponse
+    {
+        // Get authenticated user
+        $user = Auth::user();
+
+        if ($request->anyFilled(['name', 'email', 'phone', 'address'])) {
+            $updateData = [];
+
+            if ($request->filled('name')) {
+                $updateData['name'] = $request->input('name');
+            }
+
+            if ($request->filled('email')) {
+                $updateData['email'] = $request->input('email');
+            }
+
+            if ($request->filled('phone')) {
+                $updateData['phone'] = $request->input('phone');
+            }
+
+            if ($request->filled('address')) {
+                $updateData['address'] = $request->input('address');
+            }
+
+            $update = $user->update($updateData);
+            return back()->with('success-message', 'Profile updated.');
+        }
+        else {
+            return back()->with('error-message', 'Please fill at least one field to update profile.');
+        }
+    }
+
+    public function updatePassword(Request $request) : RedirectResponse
+    {
+        $user = Auth::user();
+
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required|min:6',
+            'new_password' => 'required|confirmed|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        // Check if the current password matches the user's stored password
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->with('error-message', 'Your old password is wrong. Please enter the correct password.');
+        }
+
+        $update = $user->update(['password' => Hash::make($request->new_password)]);
+
+        return back()->with('success-message', 'Password updated.');
+    }
+
+
+    /*
     public function _construct(){
         $this->middleware('auth');
     }
@@ -112,4 +181,5 @@ class ProfileController extends Controller
     public function register_member() {
         return view('UserProfile.register_member');
     }
+    */
 }
