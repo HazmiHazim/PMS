@@ -129,6 +129,16 @@ class ManageBulletinController extends Controller
         }
     }
 
+    /**
+     * Delete Bulletin
+     */
+    public function deleteBulletin($id)
+    {
+        $bulletin = Bulletin::findOrFail($id);
+        $bulletin->delete();
+        return back()->with('success-message', 'Announcement deleted successfully.');
+    }
+
     /*
     public function viewBulletinList()
     {

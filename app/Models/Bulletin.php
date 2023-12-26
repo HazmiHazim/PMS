@@ -11,7 +11,7 @@ class Bulletin extends Model
 
     protected $primaryKey = 'bulletin_id';
 
-    /*
+    /* Old Model
     protected $fillable = [
         'bulletin_category',
         'bulletin_title',

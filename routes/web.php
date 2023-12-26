@@ -65,7 +65,7 @@ Route::delete('/admin/delete-member/{id}', [ManageMemberController::class, 'dele
 // Manage User Profile
 Route::get('/admin/my-profile', [ProfileController::class, 'index'])->name('view-my-profile');
 Route::put('/admin/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
-Route::put('admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
+Route::put('/admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
 
 // Manage Bulletin Module
 Route::get('/admin/bulletin', [ManageBulletinController::class, 'index'])->name('view-bulletin');
@@ -76,6 +76,7 @@ Route::get('/admin/show-announcement/{id}', [ManageBulletinController::class, 's
 Route::get('/admin/index-edit-bulletin/{id}', [ManageBulletinController::class, 'editBulletin'])->name('view-edit-bulletin');
 Route::post('/admin/create-bulletin', [ManageBulletinController::class, 'createBulletin'])->name('create-bulletin');
 Route::put('/admin/update-bulletin/{id}', [ManageBulletinController::class, 'updateBulletin'])->name('update-bulletin');
+Route::delete('/admin/delete-bulletin/{id}', [ManageBulletinController::class, 'deleteBulletin'])->name('delete-bulletin');
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
