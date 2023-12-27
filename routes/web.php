@@ -24,6 +24,7 @@ use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\ElectedStudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Models\PtkActivityModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -196,7 +197,14 @@ Route::group(['prefix' => 'manage-election', 'as' => 'manage-election.'], functi
 });
 
 
-//Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
-Route::resource("/PtkActivity", PtkActivityController::class);
-Route::resource("/ActivityApproval", ActivityApprovalController::class);
+// Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
+// Route::resource("/PtkActivity", PtkActivityController::class);
+// Route::resource("/ActivityApproval", ActivityApprovalController::class);
+
+// Route::get('/PtkActivity',function(){
+//     return view('ManagePtkActivity/AddActivity');
+// });
+
+Route::get('/managePtkActivity', [PtkActivityController::class, 'index']);
+
 
