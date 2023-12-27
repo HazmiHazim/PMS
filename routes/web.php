@@ -182,4 +182,6 @@ Route::resource("/ActivityApproval", ActivityApprovalController::class);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/petakom-activity', [PtkActivityController::class, 'index'])->name('view');
+
 
