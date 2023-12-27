@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css ') }}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ mix('resources/css/app.css') }}">
 @endsection
 @section('content')
 <div class="card">
@@ -16,7 +20,7 @@
 </div>
   <div class="card-body">
 
-      <form action="{{ route('PtkActivity.store') }}" method="post" enctype="multipart/form-data">
+      <form action="" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <label>Activity ID</label></br>
         <input type="text" name="ACTIVITY_ID" id="ACTIVITY_ID" class="form-control"></br>
