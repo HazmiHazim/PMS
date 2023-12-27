@@ -197,21 +197,8 @@ Route::group(['prefix' => 'manage-election', 'as' => 'manage-election.'], functi
 });
 
 
-<<<<<<< Updated upstream
-// Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
-// Route::resource("/PtkActivity", PtkActivityController::class);
-// Route::resource("/ActivityApproval", ActivityApprovalController::class);
-
-// Route::get('/PtkActivity',function(){
-//     return view('ManagePtkActivity/AddActivity');
-// });
-
-Route::get('/managePtkActivity', [PtkActivityController::class, 'index']);
-
-=======
 //Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
 // Route::resource("/PtkActivity", PtkActivityController::class);
 // Route::resource("/ActivityApproval", ActivityApprovalController::class);
->>>>>>> Stashed changes
 
 Route::get('/petakom-activity', [PtkActivityController::class, 'index'])->name('view');
