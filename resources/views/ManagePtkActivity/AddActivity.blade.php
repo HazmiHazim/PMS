@@ -16,7 +16,7 @@
 </div>
   <div class="card-body">
 
-      <form action="{{ route('PtkActivity.store') }}" method="post" enctype="multipart/form-data">
+      <form action="" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <label>Activity ID</label></br>
         <input type="text" name="ACTIVITY_ID" id="ACTIVITY_ID" class="form-control"></br>
