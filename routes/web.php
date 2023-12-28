@@ -197,8 +197,8 @@ Route::group(['prefix' => 'manage-election', 'as' => 'manage-election.'], functi
 });
 
 
-//Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
-// Route::resource("/PtkActivity", PtkActivityController::class);
-// Route::resource("/ActivityApproval", ActivityApprovalController::class);
+// Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
+Route::resource("/PtkActivity", PtkActivityController::class);
+Route::resource("/ActivityApproval", ActivityApprovalController::class);
 
 Route::get('/petakom-activity', [PtkActivityController::class, 'index'])->name('view');

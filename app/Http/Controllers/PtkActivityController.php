@@ -12,7 +12,7 @@ class PtkActivityController extends Controller
     {
         $activities = PtkActivityModel::all();
         return view(
-        'ManagePtkActivity.UserActivityMenu',
+        'Admin.ManagePtkActivity.UserActivityMenu',
         compact('activities'),
     );
 
@@ -21,7 +21,7 @@ class PtkActivityController extends Controller
 
     public function create()
     {
-        return view('ManagePtkActivity.AddActivity');
+        return view('Admin.ManagePtkActivity.AddActivity');
     }
 
 
