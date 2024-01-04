@@ -1,18 +1,156 @@
 
-@extends('layouts.app')
+@extends('Admin.main')
 @section('title', 'Add Activities')
 
-@section('stylesheet')
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css ') }}">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="{{ mix('resources/css/app.css') }}">
-@endsection
+
 @section('content')
+
+
+<div class="relative flex-col p-12 h-full w-full">
+    @if (session('success-message'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            role="alert">
+            <span class="font-medium">{{ session('success-message') }}</span>
+        </div>
+    @endif
+
+    <form action="{{ route('create-member') }}" method="POST">
+        @csrf
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full">
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Activity ID
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="text" placeholder="Activity ID" name="ACTIVITY_ID" required>
+                @foreach ($errors->get('ACTIVITY_ID') as $error)
+                    <div class="text-red-500">{{ $error }}</div>
+                @endforeach
+
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Club Name
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="text" placeholder="Petakom" name="CLUB_NAME" required>
+                @foreach ($errors->get('CLUB_NAME') as $error)
+                    <div class="text-red-500">{{ $error }}</div>
+                @endforeach
+
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Advisor Club Name
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="text" placeholder="Rina Harun" name="ADVISOR_CLUB_NAME"
+                    required>
+                @foreach ($errors->get('email') as $error)
+                    <div class="text-red-500">{{ $error }}</div>
+                @endforeach
+
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Activity Name
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="text" placeholder="Activity Name" name="ACTIVITY_NAME" required>
+                @foreach ($errors->get('ACTIVITY_NAME') as $error)
+                    <div class="text-red-500">{{ $error }}</div>
+                @endforeach
+
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Activity Type
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="text" placeholder="Activity Type" name="ACTIVITY_TYPE" required>
+                @foreach ($errors->get('ACTIVITY_TYPE') as $error)
+                    <div class="text-red-500">{{ $error }}</div>
+                @endforeach
+
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Participant Number
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="Integer" placeholder="Participant Number" name="PARTICIPANT_NUM" required>
+                @foreach ($errors->get('PARTICIPANT_NUM') as $error)
+                    <div class="text-red-500">{{ $error }}</div>
+                @endforeach
+
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Vanue
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="text" placeholder="Vanue" name="VENUE" required>
+                @foreach ($errors->get('VENUE') as $error)
+                    <div class="text-red-500">{{ $error }}</div>
+                @endforeach
+
+                <div date-rangepicker class="flex items-center">
+                    <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Activity Start Date">
+                    </div>
+                    <span class="mx-4 text-gray-500">to</span>
+                    <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Activity End Date">
+                </div>
+                </div>
+
+                <div class="relative" id="timepicker-max-time-pm" data-te-input-wrapper-init>
+                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="form17" />
+                    <label for="form17" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Activity Start Time</label>
+                </div>
+
+                <div class="relative" id="timepicker-max-time-pm" data-te-input-wrapper-init>
+                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="form17" />
+                    <label for="form17" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Activity End Time</label>
+                </div>
+
+            </div>
+
+
+            <label for="role" class="ml-5 font-bold text-2xl block mb-2 text-gray-900 dark:text-white">Budget</label>
+            <select id="role" name="role"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option disabled selected>Budget Range</option>
+                <option value="hosd">Less RM1000</option>
+                <option value="dean">RM1000 - RM5000</option>
+                <option value="lecturer">RM5000 - RM8000</option>
+                <option value="ptkm_committee">RM8000 - RM10,000</option>
+                <option value="student">More Rm10,000</option>
+            </select>
+            @foreach ($errors->get('role') as $error)
+                <div class="text-red-500">{{ $error }}</div>
+            @endforeach
+
+            <div class="flex justify-end mt-10 h-full w-full">
+                <a href="{{ route('view-member-index') }}"
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Cancel</a>
+                <button type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-3">Add
+                    Activity</button>
+            </div>
+        </div>
+
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    </form>
+</div>
+
+{{--
 <div class="card">
   <div class="card-header">Add Activity Page</div>
   <div class="pull-right">
@@ -68,10 +206,11 @@
     </form>
 
   </div>
-</div>
-@endsection('content')
+</div> --}}
 
-@section('scripts')
+@endsection
+
+{{-- @section('scripts')
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
@@ -80,4 +219,18 @@
 
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+@endsection --}}
+
+
+@section('scripts')
+<script>
+    // TW Elements is free under AGPL, with a commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com
+    document.addEventListener('DOMContentLoaded', function () {
+        const pickerMaxTimePM = document.querySelector("#timepicker-max-time-pm");
+        const tmMaxPm = new Timepicker(pickerMaxTimePM, {
+            maxTime: "6:35 PM",
+        });
+    });
+</script>
+
 @endsection

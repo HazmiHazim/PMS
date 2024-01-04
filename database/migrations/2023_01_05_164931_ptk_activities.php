@@ -36,7 +36,7 @@ return new class extends Migration
             $table->time('ACTIVITY_ENDTIME');
             $table->integer('BUDGET');
 
-            
+
             $table->timestamps();
         });
     }
