@@ -69,7 +69,7 @@ Route::put('/admin/update-profile', [ProfileController::class, 'updateProfile'])
 Route::put('admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
 
 //PETAKOM ACTIVITY
-Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
+// Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
 Route::resource("/PtkActivity", PtkActivityController::class);
 Route::resource("/ActivityApproval", ActivityApprovalController::class);
 Route::get('/petakom-activity', [PtkActivityController::class, 'index'])->name('view');
