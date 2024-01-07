@@ -56,6 +56,7 @@
                     </li>
                 </ul>
                 <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+                    {{-- @dd( Auth::user() ) --}}
                     @if (Auth()->user()->role === 'coordinator')
                         <li>
                             <a href="{{ route('view-member-index') }}"
