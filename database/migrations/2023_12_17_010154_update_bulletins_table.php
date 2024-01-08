@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('name')->nullable()->change();
-            $table->string('address')->nullable()->change();
-            $table->string('phone')->nullable()->change();
+        Schema::table('bulletins', function (Blueprint $table) {
+            $table->text('message')->change();
         });
     }
 
@@ -27,8 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };
