@@ -24,6 +24,7 @@ use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\ElectedStudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,10 @@ Route::delete('/admin/delete-member/{id}', [ManageMemberController::class, 'dele
 Route::get('/admin/my-profile', [ProfileController::class, 'index'])->name('view-my-profile');
 Route::put('/admin/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
 Route::put('admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
+
+//Manage Calendar
+Route::get('/admin/fullcalender', [CalendarController::class, 'index']);
+Route::post('/admin/fullcalenderAjax', [CalendarController::class, 'ajax']);
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
