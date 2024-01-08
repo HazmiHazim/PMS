@@ -24,7 +24,6 @@ use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\ElectedStudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,10 +72,6 @@ Route::get('/admin/manage-report', [ReportController::class, 'index'])->name('ma
 Route::get('/admin/create-report', [ReportController::class, 'create'])->name('create-report');
 Route::post('/admin/store', [ReportController::class, 'store'])->name('store-report');
 Route::get('/admin/edit/', [ReportController::class, 'edit'])->name('view-edit-report');
-
-//Manage Calendar
-Route::get('/admin/fullcalender', [CalendarController::class, 'index']);
-Route::post('/admin/fullcalenderAjax', [CalendarController::class, 'ajax']);
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
