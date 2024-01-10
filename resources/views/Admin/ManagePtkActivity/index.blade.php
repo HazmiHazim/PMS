@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('Admin.main')
 
-@section('stylesheet')
-    <!-- Google Font: Source Sans Pro -->
+<!-- Google Font: Source Sans Pro -->
+{{-- @section('stylesheet')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css ') }}">
-@endsection
+@endsection --}}
 
 @section('content')
     <div class="container-fluid">
@@ -46,6 +46,8 @@
             </div>
         </div>
     </div>
+
+
 @endsection
 
 @section('scripts')
