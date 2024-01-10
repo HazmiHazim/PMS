@@ -11,6 +11,7 @@ class Bulletin extends Model
 
     protected $primaryKey = 'bulletin_id';
 
+    /* Old Model
     protected $fillable = [
         'bulletin_category',
         'bulletin_title',
@@ -20,5 +21,16 @@ class Bulletin extends Model
         'bulletin_expired_at',
         'posted_by'
     ];
+    */
 
+    // Fix incorrect naming of model of database
+    protected $fillable = [
+        'posted_by',
+        'category',
+        'title',
+        'message',
+        'url_reference',
+        'duration',
+        'expired_at',
+    ];
 }

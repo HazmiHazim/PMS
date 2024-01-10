@@ -7,13 +7,13 @@ use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\ReportController;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ManageBulletinController;
 
 use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\PtkActivityController;
 use App\Http\Controllers\ActivityApprovalController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ManageBulletinController;
 use App\Http\Controllers\Admin\ManageMemberController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -66,7 +66,18 @@ Route::delete('/admin/delete-member/{id}', [ManageMemberController::class, 'dele
 // Manage User Profile
 Route::get('/admin/my-profile', [ProfileController::class, 'index'])->name('view-my-profile');
 Route::put('/admin/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
-Route::put('admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
+Route::put('/admin/update-password', [ProfileController::class, 'updatePassword'])->name('update-password');
+
+// Manage Bulletin Module
+Route::get('/admin/bulletin', [ManageBulletinController::class, 'index'])->name('view-bulletin');
+Route::get('/admin/official-bulletin', [ManageBulletinController::class, 'viewOfficialBulletin'])->name('official-bulletin');
+Route::get('/admin/unofficial-bulletin', [ManageBulletinController::class, 'viewUnofficialBulletin'])->name('unofficial-bulletin');
+Route::get('/admin/index-create-bulletin', [ManageBulletinController::class, 'viewCreateBulletin'])->name('view-create-bulletin');
+Route::get('/admin/show-announcement/{id}', [ManageBulletinController::class, 'showAnnouncement'])->name('show-announcement');
+Route::get('/admin/index-edit-bulletin/{id}', [ManageBulletinController::class, 'editBulletin'])->name('view-edit-bulletin');
+Route::post('/admin/create-bulletin', [ManageBulletinController::class, 'createBulletin'])->name('create-bulletin');
+Route::put('/admin/update-bulletin/{id}', [ManageBulletinController::class, 'updateBulletin'])->name('update-bulletin');
+Route::delete('/admin/delete-bulletin/{id}', [ManageBulletinController::class, 'deleteBulletin'])->name('delete-bulletin');
 
 //Manage Calendar
 Route::get('/admin/fullcalender', [CalendarController::class, 'index']);
@@ -112,7 +123,7 @@ Route::group(['prefix' => 'manage-user', 'as' => 'manage-user.'], function () {
 
 });
 
-
+/*
 Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
     // Index page complete
     Route::get('/index', [ManageBulletinController::class, 'viewBulletinList'])
@@ -154,6 +165,7 @@ Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
     Route::post('/update/{bulletin_id}', [ManageBulletinController::class, 'updateBulletin'])
         ->name('update');
 });
+*/
 
 // Route::group(['prefix' => 'manage-report', 'as' => 'manage-report.'], function (){
 //     Route::get('/', [ReportController::class, 'index'])->name('index');
