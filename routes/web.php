@@ -72,6 +72,12 @@ Route::put('admin/update-password', [ProfileController::class, 'updatePassword']
 Route::get('/admin/fullcalender', [CalendarController::class, 'index']);
 Route::post('/admin/fullcalenderAjax', [CalendarController::class, 'ajax']);
 
+// Generate Report
+Route::get('/admin/manage-report', [ReportController::class, 'index'])->name('manage-report');
+Route::get('/admin/create-report', [ReportController::class, 'create'])->name('create-report');
+Route::post('/admin/store', [ReportController::class, 'store'])->name('store-report');
+Route::get('/admin/edit/', [ReportController::class, 'edit'])->name('view-edit-report');
+
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
 //Route::post('user-login', [AuthController::class, 'user_login'])->name('user.login');
@@ -149,21 +155,21 @@ Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
         ->name('update');
 });
 
-Route::group(['prefix' => 'manage-report', 'as' => 'manage-report.'], function (){
-    Route::get('/', [ReportController::class, 'index'])->name('index');
+// Route::group(['prefix' => 'manage-report', 'as' => 'manage-report.'], function (){
+//     Route::get('/', [ReportController::class, 'index'])->name('index');
 
-    Route::get('/create', [ReportController::class, 'create'])->name('create');
-    Route::post('/store', [ReportController::class, 'store'])->name('store');
+//     Route::get('/create', [ReportController::class, 'create'])->name('create');
+//     Route::post('/store', [ReportController::class, 'store'])->name('store');
 
-    Route::get('/edit/{ReportID}', [ReportController::class, 'edit'])->name('edit');
-    Route::post('/update/{ReportID}', [ReportController::class, 'update'])->name('update');
+//     Route::get('/edit/{ReportID}', [ReportController::class, 'edit'])->name('edit');
+//     Route::post('/update/{ReportID}', [ReportController::class, 'update'])->name('update');
 
-    Route::get('/view/{ReportID}', [ReportController::class, 'view'])->name('view');
+//     Route::get('/view/{ReportID}', [ReportController::class, 'view'])->name('view');
 
-    Route::get('/approve/{ReportID}', [ReportController::class, 'approve'])->name('approve');
+//     Route::get('/approve/{ReportID}', [ReportController::class, 'approve'])->name('approve');
 
-    Route::get('/reject/{ReportID}', [ReportController::class, 'reject'])->name('reject');
-});
+//     Route::get('/reject/{ReportID}', [ReportController::class, 'reject'])->name('reject');
+// });
 
 Route::group(['prefix' => 'manage-proposal', 'as' => 'manage-proposal.'], function (){
     Route::get('/', [ProposalController::class, 'index'])->name('index');
