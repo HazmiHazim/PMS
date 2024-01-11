@@ -14,12 +14,12 @@
         </div>
     @endif
 
-    <form action="{{ route('create-member') }}" method="POST">
+    <form action="{{ route('activity-createActivity') }}" method="POST">
         @csrf
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full">
-                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                {{-- <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
                     Activity ID
                 </label>
                 <input
@@ -27,7 +27,7 @@
                     id="grid-password" type="text" placeholder="Activity ID" name="ACTIVITY_ID" required>
                 @foreach ($errors->get('ACTIVITY_ID') as $error)
                     <div class="text-red-500">{{ $error }}</div>
-                @endforeach
+                @endforeach --}}
 
                 <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
                     Club Name
@@ -46,7 +46,7 @@
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-password" type="text" placeholder="Rina Harun" name="ADVISOR_CLUB_NAME"
                     required>
-                @foreach ($errors->get('email') as $error)
+                @foreach ($errors->get('ADVISOR_CLUB_NAME') as $error)
                     <div class="text-red-500">{{ $error }}</div>
                 @endforeach
 
@@ -97,7 +97,7 @@
                             <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                         </svg>
                     </div>
-                    <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Activity Start Date">
+                    <input name="ACTIVITY_STARTDATE" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Activity Start Date">
                     </div>
                     <span class="mx-4 text-gray-500">to</span>
                     <div class="relative">
@@ -106,11 +106,31 @@
                             <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                         </svg>
                     </div>
-                    <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Activity End Date">
+                    <input name="ACTIVITY_ENDDATE" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Activity End Date">
                 </div>
                 </div>
 
-                <div class="relative" id="timepicker-max-time-pm" data-te-input-wrapper-init>
+                <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                    Start Time
+                </label>
+                        <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-password" type="text" placeholder="1400" name="ACTIVITY_STARTTIME" required>
+                    @foreach ($errors->get('ACTIVITY_STARTTIME') as $error)
+                        <div class="text-red-500">{{ $error }}</div>
+                    @endforeach
+
+                    <label class="block tracking-wide text-gray-700 font-bold mb-2 ml-5 text-2xl" for="grid-password">
+                        End Time
+                    </label>
+                            <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-password" type="text" placeholder="1600" name="ACTIVITY_ENDTIME" required>
+                        @foreach ($errors->get('ACTIVITY_ENDTIME') as $error)
+                            <div class="text-red-500">{{ $error }}</div>
+                        @endforeach
+
+                {{-- <div class="relative" id="timepicker-max-time-pm" data-te-input-wrapper-init>
                     <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="form17" />
                     <label for="form17" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Activity Start Time</label>
                 </div>
@@ -118,22 +138,22 @@
                 <div class="relative" id="timepicker-max-time-pm" data-te-input-wrapper-init>
                     <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="form17" />
                     <label for="form17" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Activity End Time</label>
-                </div>
+                </div> --}}
 
             </div>
 
 
-            <label for="role" class="ml-5 font-bold text-2xl block mb-2 text-gray-900 dark:text-white">Budget</label>
-            <select id="role" name="role"
+            <label for="BUDGET" class="ml-5 font-bold text-2xl block mb-2 text-gray-900 dark:text-white">Budget</label>
+            <select id="BUDGET" name="BUDGET"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option disabled selected>Budget Range</option>
-                <option value="hosd">Less RM1000</option>
-                <option value="dean">RM1000 - RM5000</option>
-                <option value="lecturer">RM5000 - RM8000</option>
-                <option value="ptkm_committee">RM8000 - RM10,000</option>
-                <option value="student">More Rm10,000</option>
+                <option value="thousand">Less RM1000</option>
+                <option value="fiveThousand">RM1000 - RM5000</option>
+                <option value="eightThousand">RM5000 - RM8000</option>
+                <option value="tenThousand">RM8000 - RM10,000</option>
+                <option value="infinity">More Rm10,000</option>
             </select>
-            @foreach ($errors->get('role') as $error)
+            @foreach ($errors->get('BUDGET') as $error)
                 <div class="text-red-500">{{ $error }}</div>
             @endforeach
 
@@ -149,7 +169,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/datepicker.min.js"></script>
 {{--
 <div class="card">
   <div class="card-header">Add Activity Page</div>
@@ -220,17 +240,3 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 @endsection --}}
-
-
-@section('scripts')
-<script>
-    // TW Elements is free under AGPL, with a commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com
-    document.addEventListener('DOMContentLoaded', function () {
-        const pickerMaxTimePM = document.querySelector("#timepicker-max-time-pm");
-        const tmMaxPm = new Timepicker(pickerMaxTimePM, {
-            maxTime: "6:35 PM",
-        });
-    });
-</script>
-
-@endsection

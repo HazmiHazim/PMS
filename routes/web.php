@@ -101,29 +101,39 @@ Route::get('/admin/create', [PtkActivityController::class, 'create'])->name('act
 
 //Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
-//Route::post('user-login', [AuthController::class, 'user_login'])->name('user.login');
+//PETAKOM ACTIVITY
+// Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
+Route::resource("/PtkActivity", PtkActivityController::class);
+Route::resource("/ActivityApproval", ActivityApprovalController::class);
+Route::get('/petakom-activity', [PtkActivityController::class, 'index'])->name('view');
+Route::get('/admin/create', [PtkActivityController::class, 'create'])->name('activity-create'); //untuk tunjuk interface, url create tkleh sama
+Route::post('/admin/createActivity', [PtkActivityController::class, 'addActivity'])->name('activity-createActivity');
+/*
+Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
 
-//Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::post('user-login', [AuthController::class, 'user_login'])->name('user.login');
 
-//Route::get('edit', [ProfileController::class, 'edit'])->name('edit');
+Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
-//Route::post('user-edit', [ProfileController::class, 'edit_validation'])->name('user.edit_validation');
+Route::get('edit', [ProfileController::class, 'edit'])->name('edit');
 
-//Route::get('view', [ProfileController::class, 'view'])->name('view');
+Route::post('user-edit', [ProfileController::class, 'edit_validation'])->name('user.edit_validation');
 
-//Route::get('password', [ProfileController::class, 'password'])->name('password');
+Route::get('view', [ProfileController::class, 'view'])->name('view');
 
-//Route::post('change-password', [ProfileController::class, 'changePassword'])->name('user.changePassword');
+Route::get('password', [ProfileController::class, 'password'])->name('password');
 
-//Route::post('user-view', [ProfileController::class, 'view_profile'])->name('user.view_profile');
+Route::post('change-password', [ProfileController::class, 'changePassword'])->name('user.changePassword');
 
-//Route::get('register_member', [ProfileController::class, 'register_member'])->name('register_member');
+Route::post('user-view', [ProfileController::class, 'view_profile'])->name('user.view_profile');
 
-//Route::post('register', [ProfileController::class, 'member_register'])->name('user.member_register');
+Route::get('register_member', [ProfileController::class, 'register_member'])->name('register_member');
 
-//Route::get('forgot-password', [AuthController::class, 'indexForgotPassword'])->middleware('guest')->name('indexForgotPassword');
+Route::post('register', [ProfileController::class, 'member_register'])->name('user.member_register');
 
-//Route::post('forgot-password', [AuthController::class, 'resetPassword'])->middleware('guest')->name('user.resetPassword');
+Route::get('forgot-password', [AuthController::class, 'indexForgotPassword'])->middleware('guest')->name('indexForgotPassword');
+
+Route::post('forgot-password', [AuthController::class, 'resetPassword'])->middleware('guest')->name('user.resetPassword');
 
 // Route::get('indexResetPassword/{token}', [AuthController::class, 'indexResetPassword'])->middleware('guest')->name('indexResetPassword');
 
@@ -134,7 +144,7 @@ Route::get('/admin/create', [PtkActivityController::class, 'create'])->name('act
 // });
 
 
-/*
+
 Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
     // Index page complete
     Route::get('/index', [ManageBulletinController::class, 'viewBulletinList'])
@@ -176,7 +186,6 @@ Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
     Route::post('/update/{bulletin_id}', [ManageBulletinController::class, 'updateBulletin'])
         ->name('update');
 });
-*/
 
 // Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
 //     // Index page complete
@@ -223,18 +232,21 @@ Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
 // Route::group(['prefix' => 'manage-report', 'as' => 'manage-report.'], function (){
 //     Route::get('/', [ReportController::class, 'index'])->name('index');
 
-//     Route::get('/create', [ReportController::class, 'create'])->name('create');
-//     Route::post('/store', [ReportController::class, 'store'])->name('store');
+Route::group(['prefix' => 'manage-report', 'as' => 'manage-report.'], function (){
+    Route::get('/', [ReportController::class, 'index'])->name('index');
 
-//     Route::get('/edit/{ReportID}', [ReportController::class, 'edit'])->name('edit');
-//     Route::post('/update/{ReportID}', [ReportController::class, 'update'])->name('update');
+    Route::get('/create', [ReportController::class, 'create'])->name('create');
+    Route::post('/store', [ReportController::class, 'store'])->name('store');
 
-//     Route::get('/view/{ReportID}', [ReportController::class, 'view'])->name('view');
+    Route::get('/edit/{ReportID}', [ReportController::class, 'edit'])->name('edit');
+    Route::post('/update/{ReportID}', [ReportController::class, 'update'])->name('update');
 
-//     Route::get('/approve/{ReportID}', [ReportController::class, 'approve'])->name('approve');
+    Route::get('/view/{ReportID}', [ReportController::class, 'view'])->name('view');
 
-//     Route::get('/reject/{ReportID}', [ReportController::class, 'reject'])->name('reject');
-// });
+    Route::get('/approve/{ReportID}', [ReportController::class, 'approve'])->name('approve');
+
+    Route::get('/reject/{ReportID}', [ReportController::class, 'reject'])->name('reject');
+});
 
 // Route::group(['prefix' => 'manage-proposal', 'as' => 'manage-proposal.'], function (){
 //     Route::get('/', [ProposalController::class, 'index'])->name('index');
@@ -273,3 +285,7 @@ Route::group(['prefix' => 'bulletin', 'as' => 'manage-bulletin.'], function () {
 
 
 
+Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
+Route::resource("/PtkActivity", PtkActivityController::class);
+Route::resource("/ActivityApproval", ActivityApprovalController::class);
+*/
