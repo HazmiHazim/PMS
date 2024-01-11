@@ -92,20 +92,9 @@ Route::post('/admin/store', [ReportController::class, 'store'])->name('store-rep
 Route::get('/admin/edit/', [ReportController::class, 'edit'])->name('view-edit-report');
 
 //PETAKOM ACTIVITY
-// Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
-Route::resource("/PtkActivity", PtkActivityController::class);
-Route::resource("/ActivityApproval", ActivityApprovalController::class);
-Route::get('/petakom-activity', [PtkActivityController::class, 'index'])->name('view');
-Route::get('/admin/create', [PtkActivityController::class, 'create'])->name('activity-create');
-
-
-//Route::post('staff-registration', [AuthController::class, 'staff_registration'])->name('staff.register');
-
-//PETAKOM ACTIVITY
-// Route::get('/', 'App\http\Controllers\PtkActivityController@index')->name('user');
-Route::resource("/PtkActivity", PtkActivityController::class);
-Route::resource("/ActivityApproval", ActivityApprovalController::class);
-Route::get('/petakom-activity', [PtkActivityController::class, 'index'])->name('view');
+Route::resource("/admin/PtkActivity", PtkActivityController::class);
+Route::resource("/admin/ActivityApproval", ActivityApprovalController::class);
+Route::get('/admin/petakom-activity', [PtkActivityController::class, 'index'])->name('view');
 Route::get('/admin/create', [PtkActivityController::class, 'create'])->name('activity-create'); //untuk tunjuk interface, url create tkleh sama
 Route::post('/admin/createActivity', [PtkActivityController::class, 'addActivity'])->name('activity-createActivity');
 /*
